@@ -1,0 +1,12 @@
+asgiref==3.2.3
+Click==7.0
+graphql-core==3.1.0b0
+h11==0.9.0
+httptools==0.0.13
+hupper==1.10.1
+Pygments==2.5.2
+starlette==0.13.0
+strawberry-graphql==0.21.0
+uvicorn==0.11.2
+uvloop==0.14.0
+websockets==8.1

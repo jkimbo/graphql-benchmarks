@@ -137,7 +137,7 @@ async def bench_server(name, command, cwd, endpoint, queries, warmup_duration=0,
             expected_result = query.get('expectedResult')
             if expected_result and expected_result != response:
                 raise Exception("GraphQL response mismatch expected.\nReceived: {}\nExpected:{}".format(
-                    result['response'], expected_result
+                    response, expected_result
                 ))
 
         return results
@@ -146,7 +146,7 @@ async def bench_server(name, command, cwd, endpoint, queries, warmup_duration=0,
     finally:
         print("Terminating server: {}".format(name))
         if server.returncode is None:
-            server.terminate()
+            server.kill()
         await server.wait()
         await asyncio.sleep(1)
         # await force_termination(server.pid)
