@@ -80,6 +80,16 @@ servers:
     concurrency: 1
     duration: 5s
 
+- name: Tartiflette
+  endpoint: http://localhost:8009/graphql
+  run:
+    command: venv/bin/gunicorn server:app --bind localhost:8009 --worker-class aiohttp.GunicornWebWorker --workers=4
+    cwd: servers/tartiflette-aiohttp/
+    startupTime: 2s
+  warmup:
+    concurrency: 1
+    duration: 5s
+
 # - name: Express GraphQL 
 #   endpoint: http://localhost:4000/graphql
 #   run:
