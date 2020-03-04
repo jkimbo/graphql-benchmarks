@@ -60,7 +60,7 @@ def get_ymetric_fn(yMetric, on='latency'):
         yMetricFn = lambda x: x[on]['mean']
 
     if on == 'latency':
-        return lambda x: None if round(yMetricFn(x)/1000, 2) > 1000 else round(yMetricFn(x)/1000, 2)
+        return lambda x: round(yMetricFn(x)/1000, 2)
     
     return lambda x: int(yMetricFn(x))
 
