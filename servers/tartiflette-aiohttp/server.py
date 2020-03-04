@@ -32,5 +32,5 @@ logging.basicConfig(level=logging.ERROR)
 app = register_graphql_handlers(
     web.Application(),
     engine_sdl=sdl,
-    executor_http_endpoint='/graphql',
+    executor_http_endpoint='/graphql/',
 )

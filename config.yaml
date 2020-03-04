@@ -1,91 +1,60 @@
 servers:
-
 - name: Django + Graphene v2
-  endpoint: http://localhost:8001/graphql/
-  run:
-    command: venv/bin/uvicorn app.asgi:application --port 8001 --workers=4 --log-level error
-    cwd: servers/django-graphene/
-    startupTime: 2s
+  path: servers/django-graphene/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Django + Strawberry 
-  endpoint: http://localhost:8002/graphql/
-  run:
-    command: venv/bin/uvicorn app.asgi:application --port 8002 --workers=4 --log-level error
-    cwd: servers/django-strawberry/
-    startupTime: 2s
+  path: servers/django-strawberry/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Django + Ariadne
-  endpoint: http://localhost:8005/graphql/
-  run:
-    command: venv/bin/uvicorn app.asgi:application --port 8005 --workers=4 --log-level error
-    cwd: servers/django-ariadne/
-    startupTime: 2s
+  path: servers/django-ariadne/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Starlette + Graphene v3 alpha
-  endpoint: http://localhost:8003/graphql/
-  run:
-    command: venv/bin/uvicorn server:app --port 8003 --workers=4 --log-level error
-    cwd: servers/starlette-graphene-v3/
-    startupTime: 2s
+  path: servers/starlette-graphene-v3/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Starlette + Strawberry
-  endpoint: http://localhost:8004/graphql/
-  run:
-    command: venv/bin/uvicorn server:app --port 8004 --workers=4 --log-level error
-    cwd: servers/starlette-strawberry/
-    startupTime: 2s
+  path: servers/starlette-strawberry/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Starlette + Ariadne 
-  endpoint: http://localhost:8006/graphql/
-  run:
-    command: venv/bin/uvicorn server:app --port 8006 --workers=4 --log-level error
-    cwd: servers/starlette-ariadne/
-    startupTime: 2s
+  path: servers/starlette-ariadne/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Strawberry (ASGI)
-  endpoint: http://localhost:8007/graphql/
-  run:
-    command: venv/bin/uvicorn server:app --port 8007 --workers=4 --log-level error
-    cwd: servers/asgi-strawberry/
-    startupTime: 2s
+  path: servers/asgi-strawberry/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Ariadne (ASGI)
-  endpoint: http://localhost:8008/graphql/
-  run:
-    command: venv/bin/uvicorn server:app --port 8008 --workers=4 --log-level error
-    cwd: servers/asgi-ariadne/
-    startupTime: 2s
+  path: servers/asgi-ariadne/
   warmup:
     concurrency: 1
     duration: 5s
 
 - name: Tartiflette
-  endpoint: http://localhost:8009/graphql
-  run:
-    command: venv/bin/gunicorn server:app --bind localhost:8009 --worker-class aiohttp.GunicornWebWorker --workers=4
-    cwd: servers/tartiflette-aiohttp/
-    startupTime: 2s
+  path: servers/tartiflette-aiohttp/
+  warmup:
+    concurrency: 1
+    duration: 5s
+
+- name: Graphql Core v3 (ASGI)
+  path: servers/asgi-graphql-core/
   warmup:
     concurrency: 1
     duration: 5s
@@ -102,14 +71,17 @@ servers:
 
 queries:
 - name: Basic
+  runner: queries/basic.js
   filename: queries/basic.graphql
   expectedResultFilename: queries/basic.json
 
 - name: Object List
+  runner: queries/object_list.js
   filename: queries/object_list.graphql
   expectedResultFilename: queries/object_list.json
 
 - name: Scalar List
+  runner: queries/scalar_list.js
   filename: queries/scalar_list.graphql
   expectedResultFilename: queries/scalar_list.json
 
