@@ -144,7 +144,7 @@ async def run_all_benchmarks():
             raise
 
     with open("./results.json", "w") as results_file:
-        json.dump(results, results_file)
+        json.dump(results, results_file, indent=2)
 
 
 if __name__ == "__main__":
