@@ -2,29 +2,29 @@ servers:
 - name: Django + Graphene v3
   path: servers/django-graphene/
 
-- name: Django + Strawberry 
-  path: servers/django-strawberry/
+# - name: Django + Strawberry 
+#   path: servers/django-strawberry/
 
-- name: Django Rest Framework
-  path: servers/django-rest-framework/
+# - name: Django Rest Framework
+#   path: servers/django-rest-framework/
 
-- name: Django + Graphql Core v3
-  path: servers/django-graphql-core/
+# - name: Django + Graphql Core v3
+#   path: servers/django-graphql-core/
 
-- name: Django Plain JSON
-  path: servers/django-plain-json/
+# - name: Django Plain JSON
+#   path: servers/django-plain-json/
 
-- name: Starlette + Graphene v3
-  path: servers/starlette-graphene/
+# - name: Starlette + Graphene v3
+#   path: servers/starlette-graphene/
 
-- name: Starlette + Strawberry
-  path: servers/starlette-strawberry/
+# - name: Starlette + Strawberry
+#   path: servers/starlette-strawberry/
 
-- name: Starlette + Graphql Core v3
-  path: servers/starlette-graphql-core/
+# - name: Starlette + Graphql Core v3
+#   path: servers/starlette-graphql-core/
 
-- name: Starlette Plain JSON 
-  path: servers/starlette-plain-json/
+# - name: Starlette Plain JSON 
+#   path: servers/starlette-plain-json/
 
 queries:
 - name: Top 250 rated movies

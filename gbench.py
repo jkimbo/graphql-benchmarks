@@ -1,5 +1,6 @@
 import json
 import docker
+from docker.errors import NotFound
 import os
 import asyncio
 import yaml
@@ -55,14 +56,33 @@ async def run_all_benchmarks():
             continue
 
         print(f"Building image for {server_name}...")
-        client.images.build(path=f"{server_path}", tag=server_tag)
+        benchmark_process = await asyncio.create_subprocess_shell(
+            f"docker build -t {server_tag} .",
+            cwd=server_path,
+        )
+        await benchmark_process.wait()
+
+        # client.images.build(path=f"{server_path}", tag=server_tag)
         print(f"Finished building image for {server_name}.\n")
 
         print(f"Starting {server_name} server...")
+        # Remove container if it already exists
+        try:
+            old_container = client.containers.get(server_tag)
+            old_container.remove()
+        except NotFound:
+            pass
+
         container = client.containers.run(
-            server_tag, detach=True, mem_limit="1g", cpus="1", ports={"8000/tcp": 8000}
+            server_tag,
+            detach=True,
+            mem_limit="1g",
+            ports={"8000/tcp": 8000},
+            name=server_tag,
+            # auto_remove=True,
         )
         print(f"{server_name} server running.\n")
+
         try:
             # Wait for server to boot
             await asyncio.sleep(2)
