@@ -1,89 +1,49 @@
 servers:
-- name: Django + Graphene v2
+- name: Django + Graphene v3
   path: servers/django-graphene/
-  warmup:
-    concurrency: 1
-    duration: 5s
 
 - name: Django + Strawberry 
   path: servers/django-strawberry/
-  warmup:
-    concurrency: 1
-    duration: 5s
 
-- name: Django + Ariadne
-  path: servers/django-ariadne/
-  warmup:
-    concurrency: 1
-    duration: 5s
+- name: Django Rest Framework
+  path: servers/django-rest-framework/
 
-- name: Starlette + Graphene v3 alpha
-  path: servers/starlette-graphene-v3/
-  warmup:
-    concurrency: 1
-    duration: 5s
+- name: Django + Graphql Core v3
+  path: servers/django-graphql-core/
+
+- name: Django Plain JSON
+  path: servers/django-plain-json/
+
+- name: Starlette + Graphene v3
+  path: servers/starlette-graphene/
 
 - name: Starlette + Strawberry
   path: servers/starlette-strawberry/
-  warmup:
-    concurrency: 1
-    duration: 5s
 
-- name: Starlette + Ariadne 
-  path: servers/starlette-ariadne/
-  warmup:
-    concurrency: 1
-    duration: 5s
+- name: Starlette + Graphql Core v3
+  path: servers/starlette-graphql-core/
 
-- name: Strawberry (ASGI)
-  path: servers/asgi-strawberry/
-  warmup:
-    concurrency: 1
-    duration: 5s
-
-- name: Ariadne (ASGI)
-  path: servers/asgi-ariadne/
-  warmup:
-    concurrency: 1
-    duration: 5s
-
-- name: Tartiflette
-  path: servers/tartiflette-aiohttp/
-  warmup:
-    concurrency: 1
-    duration: 5s
-
-- name: Graphql Core v3 (ASGI)
-  path: servers/asgi-graphql-core/
-  warmup:
-    concurrency: 1
-    duration: 5s
-
-# - name: Express GraphQL 
-#   endpoint: http://localhost:4000/graphql
-#   run:
-#     command: node app.js
-#     cwd: servers/node-express/
-#     startupTime: 2s
-#   warmup:
-#     concurrency: 1
-#     duration: 5s
+- name: Starlette Plain JSON 
+  path: servers/starlette-plain-json/
 
 queries:
-- name: Basic
-  runner: queries/basic.js
-  filename: queries/basic.graphql
-  expectedResultFilename: queries/basic.json
+- name: Top 250 rated movies
+  runner: queries/top-movies.js
 
-- name: Object List
-  runner: queries/object_list.js
-  filename: queries/object_list.graphql
-  expectedResultFilename: queries/object_list.json
+# - name: Basic
+#   runner: queries/basic.js
+#   filename: queries/basic.graphql
+#   expectedResultFilename: queries/basic.json
 
-- name: Scalar List
-  runner: queries/scalar_list.js
-  filename: queries/scalar_list.graphql
-  expectedResultFilename: queries/scalar_list.json
+# - name: Object List
+#   runner: queries/object_list.js
+#   filename: queries/object_list.graphql
+#   expectedResultFilename: queries/object_list.json
+
+# - name: Scalar List
+#   runner: queries/scalar_list.js
+#   filename: queries/scalar_list.graphql
+#   expectedResultFilename: queries/scalar_list.json
 
 # - name: Introspection
 #   filename: queries/introspection.graphql
