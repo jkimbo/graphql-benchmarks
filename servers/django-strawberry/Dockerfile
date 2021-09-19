@@ -1,18 +1,20 @@
-FROM python:3.7-slim
+FROM python:3.9
 
-ENV PYTHONUNBUFFERED 1
-ENV PROJECT_ROOT /app
-ENV SHELL /bin/bash
+ENV POETRY_VERSION=1.1.8 \
+    # make poetry install to this location
+    POETRY_HOME="/opt/poetry" \
+    # make poetry create the virtual environment in the project's root
+    # it gets named `.venv`
+    POETRY_VIRTUALENVS_IN_PROJECT=true \
+    # do not ask any interactive question
+    POETRY_NO_INTERACTION=1
 
-RUN mkdir $PROJECT_ROOT
+RUN python -m pip install poetry
 
-# Install native deps
-RUN apt-get update && apt-get install -y build-essential
+COPY ./pyproject.toml ./poetry.lock ./
 
-COPY requirements.txt $PROJECT_ROOT
-RUN pip install -r $PROJECT_ROOT/requirements.txt
+RUN poetry install
 
-WORKDIR $PROJECT_ROOT
-COPY . $PROJECT_ROOT
+COPY ./ ./
 
-CMD uvicorn app.asgi:application --host 0.0.0.0 --workers=4
+CMD poetry run gunicorn main.wsgi --bind 0:8000 --workers 1

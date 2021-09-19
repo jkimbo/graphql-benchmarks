@@ -2,8 +2,8 @@ servers:
 - name: Django + Graphene v3
   path: servers/django-graphene/
 
-# - name: Django + Strawberry 
-#   path: servers/django-strawberry/
+- name: Django + Strawberry
+  path: servers/django-strawberry/
 
 # - name: Django Rest Framework
 #   path: servers/django-rest-framework/

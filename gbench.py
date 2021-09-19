@@ -79,7 +79,7 @@ async def run_all_benchmarks():
             mem_limit="1g",
             ports={"8000/tcp": 8000},
             name=server_tag,
-            # auto_remove=True,
+            auto_remove=True,
         )
         print(f"{server_name} server running.\n")
 
