@@ -145,7 +145,7 @@ async def run_all_benchmarks():
     with open("./results.json", "w") as results_file:
         json.dump(
             {
-                "timestamp": datetime.now().isoformat(),
+                "timestamp": datetime.utcnow().isoformat(),
                 "results": results,
             },
             results_file,
