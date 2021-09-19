@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 import docker
 from docker.errors import NotFound
@@ -136,15 +137,20 @@ async def run_all_benchmarks():
                     }
                 )
 
+        finally:
             print(f"Killing {server_name} server...")
             container.kill()
             print(f"{server_name} server killed. \n")
-        except Exception:
-            container.kill()
-            raise
 
     with open("./results.json", "w") as results_file:
-        json.dump(results, results_file, indent=2)
+        json.dump(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "results": results,
+            },
+            results_file,
+            indent=2,
+        )
 
 
 if __name__ == "__main__":

@@ -108,7 +108,7 @@ app.layout = html.Div(
 )
 def update_graph(yMetric):
     figure = {
-        "data": get_data(bench_results, get_ymetric_fn(yMetric, on="latency")),
+        "data": get_data(bench_results["results"], get_ymetric_fn(yMetric, on="latency")),
         "layout": {
             "yaxis": {"title": "Response time ({}) in ms".format(yMetric)},
             "xaxis": {"title": "API", "categoryorder": "total descending"},
@@ -127,7 +127,7 @@ def update_graph(yMetric):
 )
 def update_graph2(yMetric):
     figure = {
-        "data": get_data(bench_results, get_ymetric_fn(yMetric, on="requests")),
+        "data": get_data(bench_results["results"], get_ymetric_fn(yMetric, on="requests")),
         "layout": {
             "yaxis": {"title": "Requests/s ({})".format(yMetric)},
             "xaxis": {"title": "API", "categoryorder": "total descending"},
