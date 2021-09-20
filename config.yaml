@@ -5,6 +5,9 @@ servers:
 - name: Django + Strawberry
   path: servers/django-strawberry/
 
+- name: Django + Strawberry (raw queryset)
+  path: servers/django-strawberry-queryset/
+
 # - name: Django + Graphql Core v3
 #   path: servers/django-graphql-core/
 
