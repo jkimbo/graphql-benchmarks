@@ -5,6 +5,9 @@ servers:
 - name: Django + Strawberry
   path: servers/django-strawberry/
 
+- name: Django + Strawberry (simple resolvers)
+  path: servers/django-strawberry-simple-resolvers/
+
 # - name: Django + Graphql Core v3
 #   path: servers/django-graphql-core/
 
