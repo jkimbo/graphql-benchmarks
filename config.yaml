@@ -5,11 +5,11 @@ servers:
 - name: Django + Strawberry
   path: servers/django-strawberry/
 
-# - name: Django Rest Framework
-#   path: servers/django-rest-framework/
-
 # - name: Django + Graphql Core v3
 #   path: servers/django-graphql-core/
+
+- name: Django Rest Framework
+  path: servers/django-rest-framework/
 
 # - name: Django Plain JSON
 #   path: servers/django-plain-json/
@@ -29,6 +29,9 @@ servers:
 queries:
 - name: Top 250 rated movies
   runner: queries/top-movies.js
+  server_overrides:
+    - name: Django Rest Framework
+      runner: queries/top-movies-rest.js
 
 # - name: Basic
 #   runner: queries/basic.js

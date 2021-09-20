@@ -17,12 +17,12 @@ def load_config():
         return config
 
 
-async def run_single_benchmark(tag, query):
+async def run_single_benchmark(tag, query, runner):
     query_slug = query["name"].replace(" ", "-")
     output_file = f"results/{tag}-{query_slug}-results.json"
 
     benchmark_process = await asyncio.create_subprocess_shell(
-        f"k6 run --out json={output_file} {query['runner']}",
+        f"k6 run --out json={output_file} {runner}",
     )
     await benchmark_process.wait()
 
@@ -92,8 +92,14 @@ async def run_all_benchmarks():
                 if "runner" not in query:
                     continue
 
+                runner = query["runner"]
+                if "server_overrides" in query:
+                    for override in query["server_overrides"]:
+                        if override["name"] == server_name:
+                            runner = override["runner"]
+
                 print(f"Running {query['name']} benchmarks for {server_name}...")
-                data_points = await run_single_benchmark(server_tag, query)
+                data_points = await run_single_benchmark(server_tag, query, runner)
                 print(f"Completed {query['name']} benchmarks for {server_name}.")
 
                 request_duration_results = filter(
