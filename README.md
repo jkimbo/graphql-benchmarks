@@ -1,6 +1,6 @@
 # GraphQL benchmarks
 
-GBench is a GraphQL benchmarking tool. It's highly inspired by Hasura's work on [graphql-bench](https://github.com/hasura/graphql-bench/) but with different design and goals in mind.
+GraphQL benchmarking tool to test more realistic queries. It's highly inspired by Hasura's work on [graphql-bench](https://github.com/hasura/graphql-bench/) but with different design and goals in mind.
 
 Gbench will use a [config file](#config-file) to read the servers and queries to be executed.
 
@@ -46,4 +46,29 @@ queries:
 - name: Top 250 rated movies
   # K6 benchmark file
   runner: queries/top-movies.js
+```
+
+## Queries
+
+### Top 250 rated movies
+
+Returns the top 250 rated movies on IMDB. Data comes from a sqlite database.
+
+Query:
+
+```graphql
+query {
+  top250 {
+    id
+    imdbId
+    title
+    year
+    imageUrl
+    imdbRating
+    imdbRatingCount
+    director {
+      id
+      name
+    }
+}
 ```
