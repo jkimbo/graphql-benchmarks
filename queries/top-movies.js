@@ -4,7 +4,7 @@ import { check } from "k6";
 export let options = {
   stages: [
     {
-      duration: "10s",
+      duration: "15s",
       target: 1
     }
   ]

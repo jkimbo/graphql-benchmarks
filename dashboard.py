@@ -91,7 +91,7 @@ app.layout = html.Div(
                 {"label": "Max", "value": "MAX"},
                 {"label": "Average", "value": "AVG"},
             ],
-            value="AVG",
+            value="P95",
         ),
         dcc.Graph(id="response-time-vs-query"),
         dcc.Graph(id="requests-vs-query"),
