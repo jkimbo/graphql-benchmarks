@@ -11,8 +11,8 @@ servers:
 - name: Django Rest Framework
   path: servers/django-rest-framework/
 
-- name: Django Plain JSON
-  path: servers/django-plain-json/
+# - name: Django Plain JSON
+#   path: servers/django-plain-json/
 
 # - name: Starlette + Graphene v3
 #   path: servers/starlette-graphene/
