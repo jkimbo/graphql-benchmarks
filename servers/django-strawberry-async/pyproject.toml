@@ -9,7 +9,7 @@ python = "^3.9"
 Django = "^3.2.7"
 gunicorn = "^20.1.0"
 whitenoise = "^5.3.0"
-strawberry-graphql = { git = "https://github.com/strawberry-graphql/strawberry.git", rev = "fb3dff14e0ca95c89936909c5176878ac11a8607" }
+strawberry-graphql = { git = "https://github.com/strawberry-graphql/strawberry.git", rev = "0bb42d94bc3368b3794fe230cf997b4c5807542d" }
 daphne = "^3.0.2"
 
 [tool.poetry.dev-dependencies]

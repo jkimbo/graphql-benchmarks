@@ -342,8 +342,8 @@ sanic = ["sanic (>=20.12.2,<22.0.0)"]
 [package.source]
 type = "git"
 url = "https://github.com/strawberry-graphql/strawberry.git"
-reference = "fb3dff14e0ca95c89936909c5176878ac11a8607"
-resolved_reference = "fb3dff14e0ca95c89936909c5176878ac11a8607"
+reference = "0bb42d94bc3368b3794fe230cf997b4c5807542d"
+resolved_reference = "0bb42d94bc3368b3794fe230cf997b4c5807542d"
 
 [[package]]
 name = "twisted"
@@ -437,7 +437,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "687dacc265b71e0534810fea9345f5aeaa2785054845e6cbbea5525cf4ba2563"
+content-hash = "3a68fd9288cf2d6a22ee9da9c55e5e012705ef57fa82d49eeae23976fb70d23f"
 
 [metadata.files]
 asgiref = [

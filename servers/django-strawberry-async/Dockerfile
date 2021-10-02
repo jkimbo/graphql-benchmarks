@@ -17,4 +17,4 @@ RUN poetry install
 
 COPY ./ ./
 
-CMD poetry run daphne main.asgi:application --port 8000
+CMD poetry run daphne main.asgi:application --port 8000 --bind 0.0.0.0
