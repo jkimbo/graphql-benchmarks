@@ -17,4 +17,4 @@ RUN poetry install
 
 COPY ./ ./
 
-CMD poetry run daphne main.asgi:application --port 8000 --bind 0.0.0.0
+CMD poetry run uvicorn main.asgi:application --port 8000 --host 0.0.0.0 --workers 1
