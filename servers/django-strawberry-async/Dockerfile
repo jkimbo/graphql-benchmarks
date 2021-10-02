@@ -17,4 +17,4 @@ RUN poetry install
 
 COPY ./ ./
 
-CMD poetry run gunicorn main.asgi -k uvicorn.workers.UvicornWorker --bind 0:8000 --workers 1
+CMD poetry run daphne main.asgi:application --port 8000
