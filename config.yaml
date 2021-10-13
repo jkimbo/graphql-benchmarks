@@ -23,8 +23,14 @@ servers:
 # - name: Starlette + Graphql Core v3
 #   path: servers/starlette-graphql-core/
 
-# - name: Starlette Plain JSON 
+# - name: Starlette Plain JSON
 #   path: servers/starlette-plain-json/
+
+- name: SQLAlchemy + Strawberry
+  path: servers/fastapi-sqlalchemy/
+
+- name: SQLAlchemy + FastAPI REST
+  path: servers/fastapi-sqlalchemy/
 
 queries:
 - name: Top 250 rated movies
@@ -33,4 +39,6 @@ queries:
     - name: Django Rest Framework
       runner: queries/top-movies-rest.js
     - name: Django Plain JSON
+      runner: queries/top-movies-rest.js
+    - name: SQLAlchemy + FastAPI REST
       runner: queries/top-movies-rest.js
